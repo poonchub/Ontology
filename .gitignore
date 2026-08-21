@@ -1,15 +1,36 @@
-# v0 sandbox internal files
-__v0_runtime_loader.js
-__v0_devtools.tsx
-__v0_jsx-dev-runtime.ts
-.snowflake/
-.v0-trash/
-.vercel/
-
-# Environment variables
-.env*.local
-
-# Common ignores
-node_modules
-.next/
+# Operating system
 .DS_Store
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+backend/.env
+backend/data/*.db
+
+# Node and Next.js
+node_modules/
+frontend/.next/
+frontend/out/
+frontend/.turbo/
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+
+# Generated tooling files
+frontend/AGENTS.md
+frontend/CLAUDE.md
+
+# Fuseki runtime files; keep the TDB2 database itself under version control
+fruit-kg/data/logs/
+fruit-kg/data/backups/
+fruit-kg/data/system/
+fruit-kg/data/system_files/
+fruit-kg/data/databases/*/tdb.lock
