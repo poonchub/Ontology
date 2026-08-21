@@ -95,7 +95,7 @@ class ChatHistoryService:
                 "UPDATE conversations SET updated_at = ? WHERE id = ?",
                 (now, conversation_id),
             )
-        return int(cursor.lastrowid)
+        return conversation_id
 
     def list_conversations(self, limit: int = 50) -> List[dict[str, Any]]:
         with self._connect() as connection:

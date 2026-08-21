@@ -29,8 +29,7 @@ def test_chat_history_saves_and_reads_recent_items(tmp_path):
 def test_chat_history_groups_messages_by_conversation(tmp_path):
     history = ChatHistoryService(str(tmp_path / "chat.db"))
 
-    first_message_id = history.save(make_response("First question"))
-    first_conversation_id = history.list_recent()[0]["conversation_id"]
+    first_conversation_id = history.save(make_response("First question"))
     history.save(make_response("Follow-up question"), first_conversation_id)
     history.save(make_response("Separate question"))
 
@@ -38,5 +37,5 @@ def test_chat_history_groups_messages_by_conversation(tmp_path):
     messages = history.get_messages(first_conversation_id)
 
     assert len(conversations) == 2
-    assert first_message_id == messages[0]["id"]
+    assert first_conversation_id == messages[0]["conversation_id"]
     assert [item["question"] for item in messages] == ["First question", "Follow-up question"]
